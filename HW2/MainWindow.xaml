@@ -1,0 +1,77 @@
+﻿<Window x:Class="Calculator_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Background="WhiteSmoke"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Background="FloralWhite"></TextBlock>
+        <Button Grid.Column="1" Grid.Row="3" FontSize="22" FontWeight="Medium">CE</Button>
+        <Button Grid.Column="2" Grid.Row="3" FontSize="22" FontWeight="Medium">C</Button>
+        <Button Grid.Column="3" Grid.Row="3" FontSize="22" FontWeight="Medium">&lt;</Button>
+        <Button Grid.Column="4" Grid.Row="3" FontSize="22" FontWeight="Medium">/</Button>
+
+        <Button Grid.Column="1" Grid.Row="4" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\7.png"></Image>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="4" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\8.png"></Image>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="4" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\9.png"></Image>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="4" FontSize="22" FontWeight="Medium">*</Button>
+
+        <Button Grid.Column="1" Grid.Row="5" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\4.png"></Image>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="5" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\5.png"></Image>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="5" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\6.png"></Image>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="5" FontSize="22" FontWeight="Medium">-</Button>
+
+        <Button Grid.Column="1" Grid.Row="6" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\1.png"></Image>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="6" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\2.png"></Image>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="6" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\3.png"></Image>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="6" FontSize="22" FontWeight="Medium">+</Button>
+
+        <Button Grid.Column="1" Grid.Row="7" FontSize="22" FontWeight="Medium">.</Button>
+        <Button Grid.Column="2" Grid.Row="7" FontSize="22" FontWeight="Medium">
+            <Image Source="D:\Calculator_App\Calculator_App\Images\0.png"></Image>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" FontSize="22" FontWeight="Medium">=</Button>
+    </Grid>
+</Window>
