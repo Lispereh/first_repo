@@ -1,0 +1,23 @@
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\BD COUNTRIES HW.exe.config
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\BD COUNTRIES HW.exe
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\BD COUNTRIES HW.pdb
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.csproj.AssemblyReference.cache
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.csproj.CoreCompileInputs.cache
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.exe
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.pdb
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.ValueTuple.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.Options.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.Memory.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.Buffers.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\bin\Debug\System.Numerics.Vectors.dll
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.csproj.SuggestedBindingRedirects.cache
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.exe.config
+D:\BD COUNTRIES HW\BD COUNTRIES HW\obj\Debug\BD COUNTRIES HW.csproj.CopyComplete
