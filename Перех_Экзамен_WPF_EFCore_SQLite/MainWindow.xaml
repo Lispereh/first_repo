@@ -1,0 +1,168 @@
+﻿<Window x:Class="Expenes_Exam_Beth_Perekh.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Expenes_Exam_Beth_Perekh"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Категории">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBox x:Name="textBoxCategoryName" Margin="5" Width="150"/>
+                        <Button x:Name="buttonAddCAtegory" Margin="5" Content="Добавить категорию"/>
+                        <Button x:Name="buttonDeleteCategories" Margin="5" Content="Удалить выбранные категории"/>
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="dataGridCategories" AutoGenerateColumns="False" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Название"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Новый расход">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Width="500" Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Date: " Width="150" Margin="5"/>
+                        <DatePicker x:Name="datePickerExpenseDate" IsTodayHighlighted="True" Width="240" Margin="5"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Width="500" Orientation="Horizontal" Margin="5" >
+                        <TextBlock Text="Category: " Width="150" Margin="5"/>
+                        <ComboBox x:Name="comboBoxCategory" Width="240" Margin="5">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Width="500" Orientation="Horizontal" Grid.Row="2" Margin="5" >
+                        <TextBlock Text="Сумма" Width="150" Margin="5"/>
+                        <TextBox x:Name="textBoxExpenseAmount" Width="240" Margin="5"/>
+                    </StackPanel>
+
+                    <TextBox x:Name="textBoxExpenseDescription" Width="500" HorizontalAlignment="Center" Grid.Row="3" Margin="5"/>
+                    <Button x:Name="buttonAddExpense" Width="100" Content="Добавить расход" Grid.Row="4" Margin="5"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Таблица расходов">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <Button x:Name="buttonDeleteExpense" Width="100" Content="Удалить расход" Margin="5"/>
+                    </StackPanel>
+
+                    <DataGrid Grid.Row="1" x:Name="dataGridExpensesTable">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="40"/>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Category.Name}" Header="Категория" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Amount}" Header="Сумма" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Статистика расходов за неделю" Height="20" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="buttonUpdateDayOfWeek"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Content="Обновить статистику расходов"/>
+
+                    <DataGrid x:Name="dataGridDayOfWeek" AutoGenerateColumns="False" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Day" Binding="{Binding DayOfWeek}"/>
+                            <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Сумма расходов по категориям" Height="20" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="buttonUpdateExpensesPeriod"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Content="Обновить статистику расходов"/>
+
+                    <DataGrid x:Name="dataGridSumExpensesPeriod" AutoGenerateColumns="False" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Категория" Binding="{Binding CategoryName}"/>
+                            <DataGridTextColumn Header="Сумма" Binding="{Binding Sum}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Сводные данные">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Дата начала:" Margin="5"/>
+                        <DatePicker x:Name="datePickerStart" Margin="5"/>
+                        <TextBlock Text="Дата окончания:" Margin="5"/>
+                        <DatePicker x:Name="datePickerEnd" Margin="5"/>
+                        <TextBlock Text="Категория:" Margin="5"/>
+                        <TextBox x:Name="textBoxCategoryFilter" Margin="5" Width="100"/>
+                        <TextBlock Text="Ключевое слово:" Margin="5"/>
+                        <TextBox x:Name="textBoxKeyword" Margin="5" Width="100"/>
+                        <Button x:Name="buttonFilter" Content="Фильтровать" Margin="5"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dataGridFilteredExpenses" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="40"/>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding CategoryName}" Header="Категория" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Amount}" Header="Сумма" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
