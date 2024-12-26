@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Roboto", serif;
+        }
+
+        .content {
+            width: 800px;
+            margin: auto;
+            background: #F5F5F5;
+            padding: 25px 25px;
+        }
+
+        .h-align {
+            text-align: center;
+        }
+
+        .dotted-underline {
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .tags {
+            background: #E7E7E7;
+            color: #A22513;
+        }
+
+        .code {
+            background-color: #E7E7E7;
+            padding-left: 25px;
+            padding-top: 15px;
+            margin: 0;
+        }
+
+        .code pre {
+            margin: 0;
+            padding: 0;
+        }
+
+        .last-text{
+            background: #DCDCDC;
+            color: #4E9F9F;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 class="h-align">HTML Tutorial</h1>
+        <hr>
+        <h2 class="h-align">What is HTML?</h2>
+
+        <p>
+            <b>Hypertext Markup Language <span class="dotted-underline">(HTML)</span></b> is the standard markup language for creating web pages and web <br>
+            applications.
+        </p>
+
+        <p>
+            Web browsers receive <span class="dotted-underline">HTML</span> documents from a web server or from local storage and render the documents <br>
+            into multimedia web pages. <span class="dotted-underline">HTML</span> describes the structure of a web page semantically and originally <br>
+            included cues for the appearance of the document.
+        </p>
+
+        <p>
+            HTML elements are the building blocks of <span class="dotted-underline">HTML</span> pages. With <span class="dotted-underline">HTML</span> constructs, images and other objects <br>
+            such as interactive forms may be embedded into the rendered page. <span class="dotted-underline">HTML</span> provides a means to create <br>
+            structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, <br>
+            quotes and other items. <span class="dotted-underline">HTML</span> elements are delineated by <i>tags</i>, written using angle brackets. Tags such as <br>
+            <span class="tags">&lt;img /&gt;</span> and <span class="tags">&lt;input /&gt;</span> directly introduce content into the page. Other tags such as <span class="tags">&lt;p&gt;</span> surround and <br>
+            provide information about document text and may include other tags as sub-elements. Browsers do not <br>
+            display the <span class="dotted-underline">HTML</span> tags, but use them to interpret the content of the page.
+        </p>
+
+        <hr>
+
+        <h2 class="h-align">Markup</h2>
+
+        <p>
+            <span class="dotted-underline">HTML</span> markup consists of several key components, including those called <i>tags</i> (and their <i>attributes</i>), <br>
+            character-based <i>data types, character references</i> and entity <i>references</i>. <span class="dotted-underline">HTML</span> tags most commonly come in <br>
+            pairs like <span class="tags">&lt;h1&gt;</span> and <span class="tags">&lt;/h1&gt;</span>, although some represent <i>empty elements</i> and so are unpaired, for example <br>
+            <span class="tags">&lt;img&gt;</span>. The first tag in such a pair is the <i>start tag</i>, and the second is the <i>end tag</i> (they are also called <i>opening</i> <br>
+            <i>tags</i> and <i>closing tags</i>).
+        </p>
+
+        <p>
+            Another important component is the <span class="dotted-underline">HTML</span> <i>document type declaration</i>, which triggers standards mode <br>
+            rendering.
+        </p>
+
+        <p>
+            The following is an example of the classic "Hello, World!" program:
+        </p>
+
+        <div class="code">
+            <pre>
+<span class="tags">&lt;!DOCTYPE html&gt;</span>
+<span class="tags">&lt;html&gt;</span>
+    <span class="tags">&lt;head&gt;</span>
+        <span class="tags">&lt;title&gt;</span>This is a title<span class="tags">&lt;/title&gt;</span>
+    <span class="tags">&lt;/head&gt;</span>
+    <span class="tags">&lt;body&gt;</span>
+        <span class="tags">&lt;p&gt;</span>Hello world!<span class="tags">&lt;/p&gt;</span>
+    <span class="tags">&lt;/body&gt;</span>
+<span class="tags">&lt;/html&gt;</span>
+            </pre>
+        </div>
+
+        <hr>
+
+        <p>
+            <b>Tags:</b> <span class="last-text">CodingScripting</span> 
+                         <span class="last-text">head</span> 
+                         <span class="last-text">HTML</span> 
+                         <span class="last-text">Introduction to HTML</span> 
+                         <span class="last-text">Landing</span> 
+                         <span class="last-text">Links semantics</span> 
+                         <span class="last-text">Structure</span> 
+                         <span class="last-text">Text</span>
+        </p>
+    </div>
+</body>
+</html>
