@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #F5F5F5;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .content {
+            margin: 25px;
+        }
+
+        .content .header, .menu, .footer {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header {
+            background-color: #923158;
+            height: 100px;
+        }
+
+        .menu, .footer {
+            background-color: #6E1237;
+            height: 50px;
+        }
+
+        .middle-content {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .left {
+            display: block;
+            width: 20%;
+            margin-right: 10px;
+        }
+
+        .left div {
+            background-color: #B65B80;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .aside-1 {
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .aside-2 {
+            height: 200px;
+        }
+
+        .main-content {
+            width: 60%;
+            background-color: #B65B80;
+            height: 500px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .main {
+            width: 80%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            margin-left: 50px;
+        }
+
+        .main div {
+            background-color: #DB92AF;
+            height: 150px;
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .main div p {
+            margin-left: 50px;
+            margin-top: 25px;
+        }
+
+        .main div:last-child {
+            margin-bottom: 0;
+        }
+
+        .right {
+            width: 20%;
+            height: 300px;
+            background-color: #B65B80;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right p {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .right p:last-child {
+            margin-top: 20px;
+        }
+
+        .aside-2 p {
+            margin-top: 50px;
+        }
+
+        .p {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <p class="p">HEADER</p>
+        </div>
+
+        <div class="menu">
+            <p class="p">MENU</p>
+        </div>
+
+        <div class="middle-content">
+            <div class="left">
+                <div class="aside-1">
+                    <p class="p">ASIDE 1</p>
+                </div>
+
+                <div class="aside-2">
+                    <p class="p">ASIDE 2</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="main">
+                    <p>MAIN CONTENT</p>
+                    <div class="section-1">
+                        <p>SECTION 1</p>
+                    </div>
+
+                    <div class="section-2">
+                        <p>SECTION 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="vertical-text">
+                    <p>A</p>
+                    <p>S</p>
+                    <p>I</p>
+                    <p>D</p>
+                    <p>E</p>
+                    <p class="three">3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="p">FOOTER</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #F5F5F5;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .footer {
+            width: auto;
+            height: auto;
+            background-color: #2A4F6E;
+            margin: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            padding-bottom: 5px;
+        }
+
+        p:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .left, .center {
+            margin-left: 100px;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .right {
+            margin-left: 100px;
+            width: 30%;
+            display: flex;
+        }
+
+        .right img {
+            width: 50px;
+            border-radius: 10px;
+            filter: grayscale(100%);
+        }
+
+        .right img:hover {
+            filter: none;
+            cursor: pointer;
+        }
+
+        .right div {
+            margin-right: 25px;
+        }
+
+        .right div:last-child {
+            margin-right: 0;
+        }
+
+        hr {
+            width: 80%;
+        }
+
+        .copyright {
+            margin: 50px 0;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer">
+        <div class="content">
+            <div class="left">
+                <p>Home</p>
+                <p>About</p>
+                <p>Gallery</p>
+                <p>News</p>
+            </div>
+    
+            <div class="center">
+                <p>Blog</p>
+                <p>FAQ</p>
+                <p>Contacts</p>
+                <p>Private Policy</p>
+            </div>
+    
+            <div class="right">
+                <div class="facebook">
+                    <img src="images/facebook.svg" alt="FaceBook">
+                </div>
+                <div class="instagram">
+                    <img src="images/instagram.svg" alt="Instagram">
+                </div>
+                <div class="youtube">
+                    <img src="images/youtube.svg" alt="YouTube">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="copyright">Copyright &copy; Company 2018-2019</p>
+    </div>
+</body>
+</html>
