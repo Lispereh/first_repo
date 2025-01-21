@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poiret+One&family=Roboto:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5F5;
+    font-family: "Roboto", sans-serif;
+    color: #2E3244;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+.user-message, .helper-message {
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.helper-message {
+    margin-left: 160px;
+}
+
+.image img {
+    width: 45px;
+    height: 45px;
+}
+
+.user, .helper {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.helper {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.message-user, .message-help {
+    background-color: #FFB6C1;
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 20px 20px 20px 0px;
+    max-width: 500px;
+}
+
+.message-help {
+    background-color: #ADD8E6;
+    border-radius: 20px 20px 0px 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    align-items: flex-end;
+}
+
+.helper-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.user-info h1, .helper-info h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.user-info p, .helper-info p {
+    font-size: 14px;
+    margin: 0;
+}

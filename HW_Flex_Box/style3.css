@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poiret+One&family=Roboto:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    padding: 0%;
+    margin: 0%;
+}
+
+.my-header {
+    background-color: #008B8B;
+    padding: 15px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.my-header h1 {
+    font-size: 25px;
+    color: #FFFDFD;
+}
+
+.content {
+    background-color: #019E9E;
+    padding-top: 70px;
+}
+
+.main-div {
+    padding: 50px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.task {
+    width: 400px;
+    background-color: #DCDCDC;
+    border-radius: 10px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.task:last-child {
+    margin-right: 0;
+}
+
+.task h1 {
+    font-size: 25px;
+    color: #061323;
+    margin-left: 20px;
+}
+
+.block {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.text-task {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-task {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 25px;
+}
+
+.two-items {
+    display: flex;
+    align-items: center;
+    margin: 0 25px 0 0;
+}
+
+.hidden-two-items {
+    visibility: hidden;
+}
+
+.two-items .icon {
+    margin-right: 5px;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.user-icon-without-done {
+    margin-left: 90px;
+}
+
+.user-icon-without-done1 {
+    margin-left: 105px;
+}
