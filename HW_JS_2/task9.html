@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+</head>
+<body>
+    <script>
+        let numb = parseInt(prompt("Введите трёхзначное число"))
+        let result = 0
+        let i = 100
+
+        while (numb != 0) {
+            result += (numb % 10) * i
+            numb = parseInt(numb / 10)
+            i /= 10
+        }
+
+        alert(result)
+    </script>
+</body>
+</html>

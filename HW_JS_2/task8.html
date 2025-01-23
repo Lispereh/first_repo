@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <script>
+        let money = parseFloat(prompt("Введите сумму денег в кошельке"))
+        let chocolate = parseFloat(prompt("Введите стоимость шоколадки"))
+
+        let amount = money / chocolate
+        let change = money - (parseInt(amount) * chocolate)
+
+        alert(`На сумму ${money} ₽ вы можете купить ${parseInt(amount)} шоколада. Сдача: ${change} ₽`)
+    </script>
+</body>
+</html>
