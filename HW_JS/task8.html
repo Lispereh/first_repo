@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="pInput" placeholder="Периметр квадрата">
+    </div>
+
+    <div>
+        <input type="text" id="lenInput" placeholder="Длина окружности">
+    </div>
+    
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let p = parseFloat(pInput.value)
+            let len = parseFloat(lenInput.value)
+            let d = len / 3.14
+
+            result.innerText = (p / 4 > d) ? "Да" : "Нет"
+        }
+        
+        button.onclick = func;
+    </script>
+</body>
+</html>

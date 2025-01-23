@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Пятизначное число">
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let numb = numberInput.value
+
+            if (numb.length == 5) {
+                numb = parseInt(numb)
+                let arr1 = []
+
+                while (numb != 0) {
+                    arr1.push(parseInt(numb % 10))
+                    numb = parseInt(numb / 10)
+                }
+
+                let arr2 = arr1.slice(-1)
+                let check = true
+
+                for(let i_arr1 = 0, j_arr2 = arr2.length - 1; i_arr1 < arr1.length, j_arr2 >= 0; i_arr1++, j_arr2--) {
+                    if (arr1[i_arr1] == arr2[j_arr2]) continue
+                    else {
+                        check = false
+                        break
+                    }
+                }
+
+                if (check == true) result.innerText = "Палиндром"
+                else result.innerText = "Не палиндром"
+            }
+            else result.innerText = "Некорректный ввод";
+        }
+        
+        button.onclick = func;
+    </script>
+</body>
+</html>

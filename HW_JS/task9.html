@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+</head>
+<body>
+    <div>
+        <label>Вопрос 1</label>
+                <select id="q1">
+                    <option value="answ1">1</option>
+                    <option value="answ2">2</option>
+                    <option value="answ3">3</option>
+                </select>
+    </div>
+
+    <div>
+        <label>Вопрос 2</label>
+                <select id="q2">
+                    <option value="answ1">1</option>
+                    <option value="answ2">2</option>
+                    <option value="answ3">3</option>
+                </select>
+    </div>
+
+    <div>
+        <label>Вопрос 3</label>
+                <select id="q3">
+                    <option value="answ1">1</option>
+                    <option value="answ2">2</option>
+                    <option value="answ3">3</option>
+                </select>
+    </div>
+
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+
+    <script>
+        function func() {
+            let choice1 = q1.value
+            let choice2 = q2.value
+            let choice3 = q3.value
+
+            let score = 0
+
+            if (choice1 == "answ2") score += 2
+            if (choice2 == "answ3") score += 2
+            if (choice3 == "answ1") score += 2
+
+            result.innerText = `Ваш результат: ${score} из 6 баллов`
+        }
+
+        button.onclick = func
+    </script>
+</body>
+</html>

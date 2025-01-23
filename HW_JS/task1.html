@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <input type="text" id="ageInput" placeholder="Возраст">
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let age = parseInt(ageInput.value);
+
+            if (age > 0 && age <= 12) result.innerText = "Ребёнок";
+            else if (age > 12 && age < 18) result.innerText = "Подросток";
+            else if (age >= 18 && age < 60) result.innerText = "Взрослый";
+            else if (age >= 60 && age <= 120) result.innerText = "Пенсионер";
+            else result.innerText = "Некорректный ввод";
+        }
+        
+        button.onclick = func;
+    </script>
+</body>
+</html>

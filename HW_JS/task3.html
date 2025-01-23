@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Трёхзначное число">
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let numb = numberInput.value
+
+            if (numb.length == 3) {
+                numb = parseInt(numb)
+                let arr = []
+
+                while (numb != 0) {
+                    arr.push(parseInt(numb % 10))
+                    numb = parseInt(numb / 10)
+                }
+
+                if(arr[0] == arr[1] || arr[0] == arr[2] || arr[1] == arr[2]) result.innerText = "Одинаковые цифры есть";
+                else result.innerText = "Одинаковых цифр нет";
+            }
+            else result.innerText = "Некорректный ввод";
+        }
+        
+        button.onclick = func;
+    </script>
+</body>
+</html>

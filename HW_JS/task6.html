@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body>
+    <input type="text" id="usdInput" placeholder="USD">
+    <div>
+        <p>Выберите валюту для ковертации</p>
+        <p>1 - EUR, 1 USD = 0.96 EUR</p>
+        <p>2 - UAN, 1 USD = 7.27 UAN</p>
+        <p>3 - AZN, 1 USD = 1.7 AZN</p>
+    </div>
+    <input type="text" id="convInput" placeholder="От 1 до 3">
+    <div>
+        <button id="button">Submit</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let usd = parseFloat(usdInput.value);
+            let conv = parseInt(convInput.value);
+
+            if (conv < 1 || conv > 3) result.innerText = "Некорректный ввод";
+            else {
+                switch(conv) {
+                    case 1:
+                        result.innerText = `${(usd * 0.96)} EUR`
+                        break
+                    case 2:
+                        result.innerText = `${(usd * 7.27)} UAN`
+                        break
+
+                    case 3:
+                        result.innerText = `${(usd * 1.7)} AZN`
+                        break
+                }
+            }
+        }
+        
+        button.onclick = func;
+    </script>
+</body>
+</html>

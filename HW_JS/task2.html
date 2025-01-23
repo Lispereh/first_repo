@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Число от 0 до 9">
+    <button id="button">Submit</button>
+    <div id="result"></div>
+
+    <script>
+
+        function func() {
+            let numb = parseInt(numberInput.value);
+
+            if (numb >= 0 && numb <= 9) {
+                switch (numb) {
+                    case 0:
+                        result.innerText = ")";
+                        break
+                    
+                    case 1:
+                        result.innerText = "!";
+                        break
+
+                    case 2:
+                        result.innerText = "@";
+                        break
+
+                    case 3:
+                        result.innerText = "#";
+                        break
+
+                    case 4:
+                        result.innerText = "$";
+                        break
+
+                    case 5:
+                        result.innerText = "%";
+                        break
+
+                    case 6:
+                        result.innerText = "^";
+                        break
+
+                    case 7:
+                        result.innerText = "&";
+                        break
+                    
+                    case 8:
+                        result.innerText = "*";
+                        break
+
+                    case 9:
+                        result.innerText = "(";
+                        break
+                }
+            }
+            else result.innerText = "Некорректный ввод";
+        }
+        
+        button.onclick = func;
+
+    </script>
+</body>
+</html>
