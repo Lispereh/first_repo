@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Roboto", serif;
+}
+
+.line {
+    position: relative;
+    top: 20px;
+    left: -20px;
+
+    height: 25px;
+    width: 300px;
+    background-color: #DB6423;
+
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.image-planet {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+}
+
+.image-planet img {
+    width: 200px;
+    position: relative;
+    top: 40px;
+    right: -55px;
+}
+
+.line p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.forma {
+    display: flex;
+    position: relative;
+}
+
+.form-1 {
+    margin: auto;
+
+    width: 400px;
+    height: auto;
+    border-radius: 25px;
+
+    background-color: #9FCDCD;
+}
+
+form {
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-bottom: 50px;
+}
+
+form p {
+    color: #557C7E;
+    font-size: 10px;
+    font-weight: 400;
+
+    margin: 0;
+    margin-bottom: 5px;
+
+    padding: 0;
+}
+
+form input {
+    height: 25px;
+    width: 200px;
+
+    padding-left: 10px;
+
+    background-color: #A9D2D2;
+
+    border: none;
+    border-bottom: 1px solid #699294;
+}
+
+form input::placeholder {
+    color: #7D9FA0;
+}
+
+.footer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.footer input {
+    height: 25px;
+    width: 50px;
+    
+    padding-left: 10px;
+
+    background-color: #A9D2D2;
+
+    border: none;
+    border-bottom: 1px solid #699294;
+}
+
+.year, .cvv {
+    margin-left: 13px;
+}
+
+.card-name, .footer {
+    margin-top: 20px;
+}
