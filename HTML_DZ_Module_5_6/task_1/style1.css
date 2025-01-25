@@ -1,0 +1,38 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table-container {
+    overflow: auto;
+    max-height: 400px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #ADD8E6;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td:first-child {
+    background-color: #ADD8E6;
+    font-weight: bold;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+tr:nth-child(odd) {
+    background-color: #E9E9E9;
+}
