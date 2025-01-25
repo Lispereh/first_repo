@@ -1,0 +1,198 @@
+body {
+    width: 100vw;
+    min-width: 400px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    margin-top: 8px;
+}
+
+.img-mail {
+    width: 40px;
+    margin: 15px;
+}
+
+.mymail,
+.user {
+    display: inline-flex;
+    align-items: center;
+}
+
+.user {
+    float: right;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.menu {
+    width: 200px;
+    list-style-type: none;
+    padding-left: 8px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 60px 5px 0;
+    padding-right: 60px;
+}
+
+.img-icon {
+    padding: 0 15px;
+}
+
+.img-star,
+.img-attach {
+    width: 20px;
+    padding: 0 15px 0 15px;
+}
+
+.emails {
+    max-width: 1284px;
+    padding: 18px 0 0 8px;
+}
+
+ul.emails {
+    margin: 0;
+    padding: 0;
+}
+
+.emails-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #aba6a6;
+}
+
+.user-send {
+    max-width: 1130px;
+    display: flex;
+    flex-grow: 1;
+}
+
+.user-us {
+    min-width: 180px;
+    padding-right: 15px;
+    white-space: nowrap;
+}
+
+.send {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.text-emails {
+    color: #aba6a6;
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: inherit;
+}
+
+.attach-date {
+    display: inline-flex;
+}
+
+.date {
+    width: 50px;
+    text-align: right;
+    word-spacing: nowrap;
+    flex-shrink: 0;
+}
+
+.text::before {
+    content: "- ";
+}
+
+.menu-item:hover {
+    background-color: #f1c9d6;
+}
+
+@media screen and (min-width:801px) {
+    .emails {
+        min-width: 55%;
+    }
+
+    .user-send {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 550px) and (max-width: 800px) {
+    .container {
+        min-width: 65%;
+    }
+
+    .user-send {
+        display: inline-block;
+    }
+
+    .text::before {
+        content: none;
+    }
+
+    .text-emails {
+        width: 100%;
+        padding: 0;
+    }
+
+    .emails {
+        min-width: 55%;
+    }
+
+    .user-send {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .menu {
+        max-width: 60px;
+        list-style-type: none;
+        padding-left: 8px;
+        overflow: hidden;
+    }
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 5px 60px 5px 0;
+        
+        padding-right: 60px;
+    }
+    .img-icon {
+        padding: 0 10px;
+    }
+
+    .container {
+        min-width: 65%;
+    }
+
+    .user-send {
+        display: inline-block;
+    }
+
+    .text::before {
+        content: none;
+    }
+
+    .text-emails {
+        width: 100%;
+        padding: 0;
+    }
+
+    .emails {
+        min-width: 55%;
+    }
+
+    .user-send {
+        width: 50%;
+    }
+
+}
