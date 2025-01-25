@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Roboto", serif;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    perspective: 1000px;
+  }
+  
+  h1 {
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .box {
+    width: 300px;
+    height: 300px;
+  
+    background-color: #872D62;
+    border: 5px solid #651142;
+  
+    transition: all 1s;
+  }
+  
+  .box-left {
+    transform-origin: left;
+  }
+  
+  .box-right {
+    transform-origin: right;
+  }
+  
+  .content:hover > .box-left {
+    transform: rotateY(50deg);
+  }
+  
+  .content:hover > .box-right {
+    transform: rotateY(-50deg);
+  }
