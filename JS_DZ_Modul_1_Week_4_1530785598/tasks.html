@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Task</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Roboto", serif;
+        }
+
+        .main {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #c4d4ff;
+            border-radius: 25px;
+
+            width: 300px;
+            height: auto;
+
+            margin-right: 10px;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 20px;
+            padding: 0;
+
+            font-weight: 500;
+        }
+
+        .inner-content {
+            margin: 15px;
+        }
+
+        input {
+            border: none;
+            margin-bottom: 5px;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <!-- Task 1 -->
+        <div class="content">
+            <p class="title">Task 1</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="fNumber" placeholder="Первое число">
+                </div>
+                <div>
+                    <input type="text" id="sNumber" placeholder="Второе число">
+                </div>
+                <div>
+                    <button id="submit">Вычислить!</button>
+                </div>
+                <div id="divResult"></div>
+            </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="content">
+            <p class="title">Task 2</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="number" placeholder="Введите число">
+                </div>
+                <div>
+                    <button id="submit2">Вычислить!</button>
+                </div>
+                <div id="divResult2"></div>
+            </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="content">
+            <p class="title">Task 3</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="number1" placeholder="Первое число">
+                </div>
+                <div>
+                    <input type="text" id="number2" placeholder="Второе число">
+                </div>
+                <div>
+                    <input type="text" id="number3" placeholder="Третье число">
+                </div>
+                <div>
+                    <button id="submit3">Вычислить!</button>
+                </div>
+                <div id="divResult3"></div>
+            </div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="content">
+            <p class="title">Task 4</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="length4" placeholder="Длина прямоугольника">
+                </div>
+                <div>
+                    <input type="text" id="width4" placeholder="Ширина прямоугольника">
+                </div>
+                <div>
+                    <button id="submit4">Вычислить!</button>
+                </div>
+                <div id="divResult4"></div>
+            </div>
+        </div>
+
+        <!-- Task 5 -->
+        <div class="content">
+            <p class="title">Task 5</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="number5" placeholder="Введите число">
+                </div>
+                <div>
+                    <button id="submit5">Вычислить!</button>
+                </div>
+                <div id="divResult5"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <!-- Task 6 -->
+        <div class="content">
+            <p class="title">Task 6</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="num1" placeholder="Max">
+                </div>
+                <div>
+                    <input type="text" id="num2" placeholder="Min">
+                </div>
+                <div>
+                    <button id="submit6">Вычислить!</button>
+                </div>
+                <div id="divResult6"></div>
+            </div>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="content">
+            <p class="title">Task 7</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="h" placeholder="Часы">
+                </div>
+                <div>
+                    <input type="text" id="m" placeholder="Минуты">
+                </div>
+                <div>
+                    <input type="text" id="s" placeholder="Секунды">
+                </div>
+                <div>
+                    <button id="submit7">Вычислить!</button>
+                </div>
+                <div id="divResult7"></div>
+            </div>
+        </div>
+
+        <!-- Task 8 -->
+        <div class="content">
+            <p class="title">Task 8</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="h8" placeholder="Часы">
+                </div>
+                <div>
+                    <input type="text" id="m8" placeholder="Минуты">
+                </div>
+                <div>
+                    <input type="text" id="s8" placeholder="Секунды">
+                </div>
+                <div>
+                    <button id="submit8">Вычислить!</button>
+                </div>
+                <div id="divResult8"></div>
+            </div>
+        </div>
+
+        <!-- Task 9 -->
+        <div class="content">
+            <p class="title">Task 9</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="sek" placeholder="Секунды">
+                </div>
+                <div>
+                    <button id="submit9">Вычислить!</button>
+                </div>
+                <div id="divResult9"></div>
+            </div>
+        </div>
+
+        <!-- Task 10 -->
+        <div class="content">
+            <p class="title">Task 8</p>
+            <div class="inner-content">
+                <div>
+                    <input type="text" id="h10_1" placeholder="Часы">
+                </div>
+                <div>
+                    <input type="text" id="m10_1" placeholder="Минуты">
+                </div>
+                <div>
+                    <input type="text" id="s10_1" placeholder="Секунды">
+                </div>
+                <div>
+                    <input type="text" id="h10_2" placeholder="Часы">
+                </div>
+                <div>
+                    <input type="text" id="m10_2" placeholder="Минуты">
+                </div>
+                <div>
+                    <input type="text" id="s10_2" placeholder="Секунды">
+                </div>
+                <div>
+                    <button id="submit10">Вычислить!</button>
+                </div>
+                <div id="divResult10"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Task 1
+        function result(x, y) {
+            divResult.innerText = "Результат: "
+
+            if(x < y) divResult.innerText += -1
+            else if(x > y) divResult.innerText += 1
+            else divResult.innerText += 0
+        }
+
+        function data() {
+            let x = parseInt(fNumber.value)
+            let y = parseInt(sNumber.value)
+
+            result(x, y)
+        }
+
+        submit.onclick = data
+
+        // Task 2
+        function factorial() {
+            let n = parseInt(number.value)
+            divResult2.innerText = `Факториал ${n} = `
+
+            let res = 1
+
+            for(let i = 1; i <= n; i++) {
+                res *= i
+            }
+
+            divResult2.innerText += res
+        }
+
+        submit2.onclick = factorial
+
+        // Task 3
+        function calculate(x, y, z) {
+            let res = `${x}${y}${z}`
+            divResult3.innerText = parseInt(res)
+        }
+
+        function data3() {
+            let x = parseInt(number1.value)
+            let y = parseInt(number2.value)
+            let z = parseInt(number3.value)
+
+            calculate(x, y, z)
+        }
+
+        submit3.onclick = data3
+
+        // Task 4
+        function calcS(x) {
+            let res = `Площадь квадрата = ${x * x}`
+            divResult4.innerText = res
+        }
+
+        function calcP(x, y) {
+            let res = `Периметр прямоугольника = ${2 * (x + y)}`
+            divResult4.innerText = res
+        }
+
+        function data4() {
+            let x = length4.value
+            let y = width4.value
+
+            if(x == "") calcS(parseInt(y))
+            else if (y == "") calcS(parseInt(x))
+            else calcP(parseInt(x), parseInt(y))
+        }
+
+        submit4.onclick = data4
+
+        // Task 5
+        function checkNumber5_2(number) {
+            let res = 0
+
+            for(let i = 1; i < number; i++) {
+                if(number % i === 0) res += i
+            }
+
+            if(res === number) return 1
+            else return 0
+        }
+
+        function checkNumber5_1() {
+            let number = parseInt(number5.value)
+            let res = checkNumber5_2(number)
+
+            if(res === 1) divResult5.innerText = `Число ${number} совершенно`
+            else divResult5.innerText = `Число ${number} несовершенно`
+        }
+
+        submit5.onclick = checkNumber5_1
+
+        // Task 6
+        function data6() {
+            let x = parseInt(num1.value)
+            let y = parseInt(num2.value)
+
+            let res = ""
+
+            for(let i = x; i <= y; i++) {
+                if(checkNumber5_2(i)) res += `${i} `
+            }
+
+            divResult6.innerText = res
+        }
+
+        submit6.onclick = data6
+
+        // Task 7
+        function returnTime(x, y, z) {
+            if(y == "") y = "00"
+            if(z == "") z = "00"
+
+            return `${x.length > 1 ? `${x}` : `0${x}`}:${y.length > 1 ? `${y}` : `0${y}`}:${z.length > 1 ? `${z}` : `0${z}`}`
+        }
+
+        function data7() {
+            divResult7.innerText = ""
+            let x = h.value
+            let y = m.value
+            let z = s.value
+
+            divResult7.innerText = returnTime(x, y, z)
+        }
+
+        submit7.onclick = data7
+
+        // Task 8
+        function toSeconds(h, m, s) {
+            return parseInt(h) * 3600 + parseInt(m == "" ? 0 : m) * 60 + parseInt(s == "" ? 0 : s)
+        }
+
+        function data8() {
+            divResult8.innerText = ""
+            let x = h8.value
+            let y = m8.value
+            let z = s8.value
+
+            divResult8.innerText = returnTime(x, y, z)
+
+            let res = toSeconds(x, y, z)
+            divResult8.innerText += ` = ${res} секунд`
+        }
+
+        submit8.onclick = data8
+
+        // Task 9
+        function fromSeconds(sec) {
+            let hours = parseInt(sec / 3600)
+            let x1 = sec % 3600
+
+            let minutes = parseInt(x1 / 60)
+            x1 = x1 % 60
+            
+            let seconds = x1
+            return returnTime(hours, minutes, seconds)
+        }
+
+        function data9() {
+            divResult9.innerText = ""
+            let x = parseInt(sek.value)
+
+            divResult9.innerText += `${x} секунд = ${fromSeconds(x)}`
+        }
+
+        submit9.onclick = data9
+
+        // Task 10
+        function data10() {
+            let x1 = h10_1.value
+            let y1 = m10_1.value
+            let z1 = s10_1.value
+
+            let x2 = h10_2.value
+            let y2 = m10_2.value
+            let z2 = s10_2.value
+
+            let fSeconds = toSeconds(x1, y1, z1)
+            let sSeconds = toSeconds(x2, y2, z2)
+
+            divResult10.innerText = `${returnTime(x1, y1, z1)} - ${returnTime(x2, y2, z2)} = ${fromSeconds(fSeconds - sSeconds)}`
+        }
+
+        submit10.onclick = data10
+    </script>
+</body>
+</html>
