@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .left-part {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .right-part {
+            flex: 2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resCar, #resTime {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #resCar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="left-part">
+            <p>Model</p>
+            <p>Year</p>
+            <p>Speed</p>
+        </div>
+
+        <div class="right-part">
+            <div>
+                <input type="text" id="model">
+            </div>
+            <div>
+                <input type="text" id="year">
+            </div>
+            <div>
+                <input type="text" id="speed">
+            </div>
+        </div>
+    </div>
+
+    <button id="carData">Загрузить данные</button>
+    <div id="resCar"></div>
+
+    <div class="content">
+        <div class="left-part">
+            <p>Distance</p>
+        </div>
+
+        <div class="right-part">
+            <input type="text" id="distance">
+        </div>
+    </div>
+    <button id="submit">Загрузить данные</button>
+    <div id="resTime"></div>
+
+    <script>
+        let car = {};
+
+        function getCar() {
+            return {
+                Model: model.value,
+                Year: year.value,
+                Speed: parseFloat(speed.value)
+            };
+        }
+
+        function showCar() {
+            car = getCar();
+            resCar.innerText = "Your car: " + car.Model + ", " + car.Year;
+        }
+
+        function calc() {
+            if ("Speed" in car && car.Speed > 0) {
+                let dist = parseFloat(distance.value);
+                let time = dist / car.Speed;
+                let breaks = Math.floor(time / 4); // Округление
+                let totalTime = time + breaks;
+                resTime.innerText = `Total time: ${totalTime.toFixed(2)} hours.`; // Ограничение до 2 знаков после запятой
+            } else {
+                resTime.innerText = "Please enter a valid speed.";
+            }
+        }
+
+        carData.onclick = showCar;
+        submit.onclick = calc;        
+    </script>
+</body>
+</html>

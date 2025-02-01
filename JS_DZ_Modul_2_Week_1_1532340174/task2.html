@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .left-part {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .right-part {
+            flex: 2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .battons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resFract {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <div class="left-part">
+            <p>Числитель</p>
+            <p>Знаменатель</p>
+        </div>
+
+        <div class="right-part">
+            <div>
+                <input type="text" id="num1">
+            </div>
+            <div>
+                <input type="text" id="den1">
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left-part">
+            <p>Числитель</p>
+            <p>Знаменатель</p>
+        </div>
+
+        <div class="right-part">
+            <div>
+                <input type="text" id="num2">
+            </div>
+            <div>
+                <input type="text" id="den2">
+            </div>
+        </div>
+    </div>
+
+    <div class="battons">
+        <button id="sum">Сложение</button>
+        <button id="subs">Вычитание</button>
+        <button id="mult">Умножение</button>
+        <button id="division">Деление</button>
+        <button id="reduction">Сокращение</button>
+    </div>
+
+
+    <div id="resFract"></div>
+
+    <script>
+
+        function returnFraction(inputNum, inputDen) {
+            return {
+                numerator: parseInt(inputNum.value),
+                denominator: parseInt(inputDen.value)
+            }
+        }
+
+        function fractionReduction(f1, f2) {
+            let minDen = (f1 <= f2 ? f1 : f2)
+            let nod = 1
+
+            for(let i = minDen; i >= 2; i--) {
+                if(f1 % i === 0 && f2 % i === 0) {
+                    nod = i
+                    break
+                }
+            }
+
+            return nod
+        }
+
+        function result(fracRes, nod) {
+            return {
+                numerator: fracRes.numerator / nod,
+                denominator: fracRes.denominator / nod
+            }
+        }
+
+        function sumWithEqualsDenominators(f1, f2) {
+            let nod = fractionReduction(f1.denominator, f2.denominator)
+            fracRes = {
+                numerator: (f1.numerator + f2.numerator),
+                denominator: f1.denominator
+            }
+
+            return result(fracRes, nod)
+        }
+
+        function subtrWithEqualsDenominators(f1, f2) {
+            let nod = fractionReduction(f1.denominator, f2.denominator)
+
+            fracRes = {
+                numerator: (f1.numerator - f2.numerator),
+                denominator: f1.denominator
+            }
+
+            return result(fracRes, nod)
+        }
+
+        function sumWithDiffDenominators(f1, f2) {
+            let fracRes = {
+                numerator: (f1.numerator * f2.denominator + f2.numerator * f1.denominator),
+                denominator: (f1.denominator * f2.denominator)
+            };
+            let nod = fractionReduction(fracRes.numerator, fracRes.denominator);
+            return result(fracRes, nod);
+        }
+
+        function substWithDiffDenominators(f1, f2) {
+            let fracRes = {
+                numerator: (f1.numerator * f2.denominator - f2.numerator * f1.denominator),
+                denominator: (f1.denominator * f2.denominator)
+            };
+            let nod = fractionReduction(fracRes.numerator, fracRes.denominator);
+            return result(fracRes, nod);
+        }
+
+        function multF(f1, f2) {
+            let fracRes =  {
+                numerator: (f1.numerator * f2.numerator),
+                denominator: (f1.denominator * f2.denominator)
+            }
+
+            let nod = fractionReduction(fracRes.numerator, fracRes.denominator)
+
+            return result(fracRes, nod)
+        }
+
+        function sumFractions(f1, f2) {
+            if ((f1.numerator === null || f1.denominator === null || f1.denominator === 0) ||
+                (f2.numerator === null || f2.denominator === null || f2.denominator === 0)) {
+                resFract.innerText = `Сложение невозможно: некорректный ввод.`
+            }
+            else {
+                if(f1.denominator === f2.denominator) {
+                    let fracSumRes = sumWithEqualsDenominators(f1, f2)
+                    resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+                }
+                else {
+                    let fracSumRes = sumWithDiffDenominators(f1, f2)
+                    resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+                }
+            }
+        }
+
+        function subFractions(f1, f2) {
+            if ((f1.numerator === null || f1.denominator === null || f1.denominator === 0) ||
+                (f2.numerator === null || f2.denominator === null || f2.denominator === 0)) {
+                resFract.innerText = `Вычитание невозможно: некорректный ввод.`
+            }
+            else {
+                if(f1.denominator === f2.denominator) {
+                    let fracSumRes = subtrWithEqualsDenominators(f1, f2)
+                    resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+                }
+                else {
+                    let fracSumRes = substWithDiffDenominators(f1, f2)
+                    resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+                }
+            }
+        }
+
+        function multFractions(f1, f2) {
+            if ((f1.numerator === null || f1.denominator === null || f1.denominator === 0) ||
+                (f2.numerator === null || f2.denominator === null || f2.denominator === 0)) {
+                resFract.innerText = `Умножение невозможно: некорректный ввод.`
+            }
+            else {
+                let fracSumRes = multF(f1, f2)
+                resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+            }
+        }
+
+        function divisionFractions(f1, f2) {
+            if ((f1.numerator === null || f1.denominator === null || f1.denominator === 0) ||
+                (f2.numerator === null || f2.denominator === null || f2.denominator === 0)) {
+                resFract.innerText = `Деление невозможно: некорректный ввод.`
+            }
+            else {
+                let temp = {
+                    numerator: f2.denominator,
+                    denominator: f2.numerator
+                }
+
+                let fracSumRes = multF(f1, temp)
+                resFract.innerText = `Результат: ${fracSumRes.numerator}/${fracSumRes.denominator}`
+            }
+        }
+        
+        function reduct(f1) {
+            if (f1.numerator === null || f1.denominator === null || f1.denominator === 0) {
+                resFract.innerText = `Сокращение невозможно: некорректный ввод.`;
+            } else 
+            {
+                let nod = fractionReduction(f1.numerator, f1.denominator);
+                let fracRes = result(f1, nod);
+                resFract.innerText = `Результат: ${fracRes.numerator}/${fracRes.denominator}`;
+            }
+        }
+
+        function getData() {
+            let f1 = returnFraction(num1, den1)
+            let f2 = returnFraction(num2, den2)
+
+            return { f1, f2 };
+        }
+
+        sum.onclick = function() {
+            let { f1, f2 } = getData();
+            sumFractions(f1, f2);
+        };
+
+        subs.onclick = function() {
+            let { f1, f2 } = getData();
+            subFractions(f1, f2);
+        };
+
+        mult.onclick = function() {
+            let { f1, f2 } = getData();
+            multFractions(f1, f2);
+        };
+
+        division.onclick = function() {
+            let { f1, f2 } = getData();
+            divisionFractions(f1, f2);
+        };
+
+        reduction.onclick = function() {
+            let { f1 } = getData();
+            reduct(f1);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление временем</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .left-part {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .right-part {
+            flex: 2;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .battons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #time {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="left-part">
+            <p>Текущее время:</p>
+        </div>
+        <div class="right-part">
+            <input type="text" id="time" value="00:00:00" readonly>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left-part">
+            <p>Часы</p>
+            <p>Минуты</p>
+            <p>Секунды</p>
+        </div>
+        <div class="right-part">
+            <input type="number" id="inputHours" placeholder="Часы" min="0">
+            <input type="number" id="inputMinutes" placeholder="Минуты" min="0">
+            <input type="number" id="inputSeconds" placeholder="Секунды" min="0">
+        </div>
+    </div>
+
+    <div class="battons">
+        <button onclick="addTime()">Добавить время</button>
+        <button onclick="subtractTime()">Вычесть время</button>
+    </div>
+
+    <script>
+
+        /*
+
+        В коде реализованы функции, которые мы ещё не проходили:
+        document.getElementById('') - получение доступа к HTML-элементу на веб-странице по его ID.
+                                      document - это объект, представляющий всю HTML-страницу,
+                                      getElementById() - это метод этого объекта, принимает один аргумент: строку, представляющую ID элемента, который необходимо найти
+                                      Если элемент с указанным ID существует на странице, функция возвращает объект
+                                      Если элемента с таким ID нет, функция вернет null
+
+        Math.floor() - функция является частью объекта Math в JavaScript.
+                       Используется для округления числа в меньшую сторону до ближайшего целого числа
+
+        parseInt(document.getElementById('').value) || 0 - выражение используется для получения целого числа из значения,
+                                                           введенного пользователем в поле ввода HTML, и обеспечения значения по умолчанию
+
+        Math.ceil() - функция является частью объекта Math в JavaScript и используется
+                      для округления числа в большую сторону до ближайшего целого числа
+
+        Math.abs() - функция является частью объекта Math в JavaScript и используется
+                     для получения абсолютного значения числа (его модуля)
+
+        */
+
+        let time = {
+            hours: 0,
+            minutes: 0,
+            seconds: 0
+        };
+
+        function displayTime() {
+            const timeElement = document.getElementById('time');
+            const formattedTime = `${pad(time.hours)}:${pad(time.minutes)}:${pad(time.seconds)}`;
+            timeElement.value = formattedTime;
+        }
+
+        function pad(value) {
+            return value < 10 ? `0${value}` : value;
+        }
+
+        function normalizeTime() {
+            if (time.seconds >= 60) {
+                time.minutes += Math.floor(time.seconds / 60);
+                time.seconds = time.seconds % 60;
+            }
+            if (time.minutes >= 60) {
+                time.hours += Math.floor(time.minutes / 60);
+                time.minutes = time.minutes % 60;
+            }
+            if (time.hours >= 24) {
+                time.hours = time.hours % 24;
+            }
+        }
+
+        function addTime() {
+            const hours = parseInt(document.getElementById('inputHours').value) || 0;
+            const minutes = parseInt(document.getElementById('inputMinutes').value) || 0;
+            const seconds = parseInt(document.getElementById('inputSeconds').value) || 0;
+
+            time.hours += hours;
+            time.minutes += minutes;
+            time.seconds += seconds;
+
+            normalizeTime();
+            displayTime();
+        }
+
+        function subtractTime() {
+            const hours = parseInt(document.getElementById('inputHours').value) || 0;
+            const minutes = parseInt(document.getElementById('inputMinutes').value) || 0;
+            const seconds = parseInt(document.getElementById('inputSeconds').value) || 0;
+
+            time.hours -= hours;
+            time.minutes -= minutes;
+            time.seconds -= seconds;
+
+            if (time.seconds < 0) {
+                time.minutes -= Math.ceil(Math.abs(time.seconds) / 60);
+                time.seconds = 60 + (time.seconds % 60);
+            }
+            if (time.minutes < 0) {
+                time.hours -= Math.ceil(Math.abs(time.minutes) / 60);
+                time.minutes = 60 + (time.minutes % 60);
+            }
+            if (time.hours < 0) {
+                time.hours = 24 + (time.hours % 24);
+            }
+
+            normalizeTime();
+            displayTime();
+        }
+
+        displayTime();
+    </script>
+</body>
+</html>
