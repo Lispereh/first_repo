@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .printProductsLust, .addProduct, .buyProduct {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultprintButton, #resultAddButton, #resultBuyButton {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="printProductsLust">
+        <button id="printButton">Вывести список</button>
+        <div id="resultprintButton"></div>
+    </div>
+
+    <div class="addProduct">
+        <input type="text" id="prodName" placeholder="Название">
+        <input type="text" id="prodQuantity" placeholder="Количество">
+        <input type="text" id="prodIsBought" placeholder="Куплен: да / нет">
+        <button id="addButton">Добавить покупку</button>
+        <div id="resultAddButton"></div>
+    </div>
+
+    <div class="buyProduct">
+        <input type="text" id="prodNameBuy" placeholder="Название">
+        <button id="buyButton">Купить продукт</button>
+        <div id="resultBuyButton"></div>
+    </div>
+
+    <script>
+        var productsList = [
+            {
+                ProductName: "Хлеб",
+                Quantity: 1,
+                IsBought: true
+            },
+
+            {
+                ProductName: "Морковь",
+                Quantity: 3,
+                IsBought: false
+            },
+
+            {
+                ProductName: "Шоколад",
+                Quantity: 10,
+                IsBought: false
+            }
+        ];
+
+        function printOneProduct(index) {
+            return `${productsList[index].ProductName}, ${productsList[index].Quantity} шт., куплен: ${productsList[index].IsBought ? "да" : "нет"}.\n`;
+        }
+
+        function printAllProducts() {
+            let bought = [];
+            let result1 = "";
+
+            for(let i = 0; i < productsList.length; i++) {
+                if(productsList[i].IsBought === true) bought.push(productsList[i]);
+                else {
+                    result1 += `${productsList[i].ProductName}, ${productsList[i].Quantity} шт., куплен: нет.\n`;
+                }
+            }
+
+            if(bought.length >= 1) {
+                for(let i = 0; i < bought.length; i++) {
+                    result1 += `${bought[i].ProductName}, ${bought[i].Quantity} шт., куплен: да.\n`;
+                }
+            }
+
+            resultprintButton.innerText = result1;
+        }
+
+        function buyProduct() {
+            let name = prodNameBuy.value;
+            let index = productsList.findIndex(item => item.ProductName === name);
+
+            if (index !== -1) {
+                productsList[index].IsBought = true;
+                resultBuyButton.innerText = `Товар куплен.\n${printOneProduct(index)}`;
+            }
+            else resultBuyButton.innerText = "Товар не найден.";
+        }
+
+        function addProduct() {
+            let name = prodName.value;
+            let index = productsList.findIndex(item => item.ProductName === name);
+
+            if(index !== -1) {
+                productsList[index].Quantity = parseInt(productsList[index].Quantity) + 1;
+                resultAddButton.innerText = `Товар есть в списке, увеличено количество.\n${printOneProduct(index)}`;
+            }
+            else {
+                productsList.push(
+                    {
+                        ProductName: name,
+                        Quantity: prodQuantity.value,
+                        IsBought: (prodIsBought.value.toLowerCase().trim() === "да" ? true : false)
+                    }
+                )
+
+                resultAddButton.innerText = `Товар добавлен.\n${printOneProduct(productsList.length)}`;
+            }
+        }
+
+        printButton.onclick = printAllProducts;
+        buyButton.onclick = buyProduct;
+        addButton.onclick = addProduct;
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .print, .printOneAuditorium, .printSomeAuditorium, .sort {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultPrintAuditoriums, #resultPrintOneAuditorium, #resultPrintSomeAuditorium {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="print">
+        <button id="printAuditoriumsButton">Вывести список аудиторий</button>
+        <div id="resultPrintAuditoriums"></div>
+    </div>
+
+    <div class="printOneAuditorium">
+        <input type="text" id="auditoriumNameInput" placeholder="Название аудитории">
+        <button id="printOneAuditoriumButton">Вывести список аудиторий</button>
+        <div id="resultPrintOneAuditorium"></div>
+    </div>
+
+    <div class="printSomeAuditorium">
+        <input type="text" id="nameInput" placeholder="Название группы">
+        <input type="text" id="studentsInput" placeholder="Количество студентов">
+        <input type="text" id="facultyInput" placeholder="Название факультета">
+        <button id="printSomeAuditoriumButton">Вывести список аудиторий</button>
+        <div id="resultPrintSomeAuditorium"></div>
+    </div>
+
+    <div class="sort">
+        <button id="sortPlaces">Сортировать по количеству мест</button>
+        <button id="sortName">Сортировать по алфавиту</button>
+    </div>
+
+    <script>
+        var auditoriumArr = [
+            {
+                Name: "Аудитория 1",
+                PlacesQuantity: 40,
+                FacultyName: "Факультет 1"
+            },
+
+            {
+                Name: "Аудитория 2",
+                PlacesQuantity: 20,
+                FacultyName: "Факультет 2"
+            },
+
+            {
+                Name: "Аудитория 3",
+                PlacesQuantity: 30,
+                FacultyName: "Факультет 3"
+            }
+        ]
+
+        function printAuditoriums() {
+            resultPrintAuditoriums.innerText = ""
+            for(let i = 0; i < auditoriumArr.length; i++) {
+                if(i < auditoriumArr.length - 1) resultPrintAuditoriums.innerText += 
+                `
+                    Название аудитории: ${auditoriumArr[i].Name}\n
+                    Количество мест: ${auditoriumArr[i].PlacesQuantity}\n
+                    Название факультета: ${auditoriumArr[i].FacultyName}\n\n
+                    ----- * ----- * ----- * ----- * -----\n\n
+                `;
+                else resultPrintAuditoriums.innerText += 
+                `
+                    Название аудитории: ${auditoriumArr[i].Name}\n
+                    Количество мест: ${auditoriumArr[i].PlacesQuantity}\n
+                    Название факультета: ${auditoriumArr[i].FacultyName}
+                `;
+            }
+        }
+
+        function printOneAuditorium(index) {
+            resultPrintOneAuditorium.innerText = 
+                `
+                    Название аудитории: ${auditoriumArr[index].Name}\n
+                    Количество мест: ${auditoriumArr[index].PlacesQuantity}\n
+                    Название факультета: ${auditoriumArr[index].FacultyName}
+                `;
+        }
+
+        function dataAuditoriumName() {
+            let name = auditoriumNameInput.value;
+            let index = auditoriumArr.findIndex(item => item.Name === name);
+            if(index === -1) resultPrintOneAuditorium.innerText = "Аудитория не найдена."
+            else printOneAuditorium(index);
+        }
+
+
+
+        function dataStudents() {
+            let obj = {
+                NameGroup: nameInput.value,
+                StudentsQuantity: parseInt(studentsInput.value),
+                NameFaculty: facultyInput.value
+            };
+
+            let filteredAuditoriums = auditoriumArr.filter(item => 
+                item.FacultyName === obj.NameFaculty && item.PlacesQuantity >= obj.StudentsQuantity
+            );
+
+            if (filteredAuditoriums.length === 0) {
+                resultPrintSomeAuditorium.innerText = "Аудитории не найдены.";
+            } else {
+                resultPrintSomeAuditorium.innerText = filteredAuditoriums.map(item => 
+                    `Название аудитории: ${item.Name}, Количество мест: ${item.PlacesQuantity}`
+                ).join('\n');
+            }
+        }
+
+        function sortByPlaces() {
+            auditoriumArr.sort((a, b) => a.PlacesQuantity - b.PlacesQuantity);
+            printAuditoriums();
+        }
+
+        function sortByNames() {
+            auditoriumArr.sort((a, b) => a.Name - b.Name);
+            printAuditoriums();
+        }
+
+
+        printAuditoriumsButton.onclick = printAuditoriums;
+        printOneAuditoriumButton.onclick = dataAuditoriumName;
+        printSomeAuditoriumButton.onclick = dataStudents;
+        sortPlaces.onclick = sortByPlaces;
+        sortName.onclick = sortByNames;
+    </script>
+</body>
+</html>

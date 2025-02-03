@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .print, .sum, .max, .avg {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultPrintCheque, #resultSumPurchase, #resultMaxPurchase, #resultAvgProduct {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="print">
+        <button id="printChequeButton">Распечатать чек</button>
+        <div id="resultPrintCheque"></div>
+    </div>
+
+    <div class="sum">
+        <button id="sumPurchaseButton">Подсчитать сумму покупки</button>
+        <div id="resultSumPurchase"></div>
+    </div>
+
+    <div class="max">
+        <button id="maxPurchaseButton">Узнать самую дорогую покупку</button>
+        <div id="resultMaxPurchase"></div>
+    </div>
+
+    <div class="avg">
+        <button id="avgProductButton">Узнать самую дорогую покупку</button>
+        <div id="resultAvgProduct"></div>
+    </div>
+
+    <script>
+
+        var cheque = [
+            {
+                Name: "Товар 1",
+                Quality: 1,
+                Sale: 1.5
+            },
+
+            {
+                Name: "Товар 2",
+                Quality: 2,
+                Sale: 2.5
+            },
+
+            {
+                Name: "Товар 3",
+                Quality: 3,
+                Sale: 3.5
+            },
+        ];
+
+        function printCheque() {
+            for(let i = 0; i < cheque.length; i++) {
+                resultPrintCheque.innerText += 
+                `
+                ----- * ----- * ----- * -----\n
+                Название: ${cheque[i].Name}\n
+                Количество: ${cheque[i].Quality}\n
+                Цена: ${cheque[i].Sale}\n
+                `
+
+                if(i === cheque.length - 1) resultPrintCheque.innerText += "----- * ----- * ----- * -----"
+            }
+        }
+
+        function sumPurchase() {
+            let resultSum = 0;
+
+            for(let i = 0; i < cheque.length; i++) {
+                resultSum += (parseFloat(cheque[i].Sale) * parseInt(cheque[i].Quality));
+            }
+
+            resultSumPurchase.innerText = `Общая сумма покупки: ${resultSum} ₽`;
+        }
+
+        function maxSale() {
+            let max = parseFloat(cheque[0].Sale) * parseInt(cheque[0].Quality);
+            let index = 0;
+
+            for(let i = 1; i < cheque.length; i++) {
+                if(max < parseFloat(cheque[i].Sale) * parseInt(cheque[i].Quality)) {
+                    max = parseFloat(cheque[i].Sale) * parseInt(cheque[i].Quality);
+                    index = i;
+                }
+            }
+
+            resultMaxPurchase.innerText = `Самая дорогая покупка в чеке: ${cheque[index].Name} - ${parseFloat(cheque[index].Sale) * parseInt(cheque[index].Quality)} ₽`
+        }
+
+        function avg() {
+            let sum = 0;
+            let quality = 0;
+
+            for(let i = 0; i < cheque.length; i++) {
+                sum += (parseFloat(cheque[i].Sale) * parseInt(cheque[i].Quality));
+                quality += parseInt(cheque[i].Quality);
+            }
+
+            resultAvgProduct.innerText = `Средняя стоимость одного товара в чеке: ${parseFloat(sum / quality).toFixed(2)} ₽`; // Ограничение количества знаков после запятой
+        }
+
+        printChequeButton.onclick = printCheque;
+        sumPurchaseButton.onclick = sumPurchase;
+        maxPurchaseButton.onclick = maxSale;
+        avgProductButton.onclick = avg;
+    </script>
+</body>
+</html>

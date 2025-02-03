@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .text {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="text">
+        <input type="text" id="textInput" placeholder="Введите строку">
+        <button id="addButton">Отобразить текст</button>
+    </div>
+
+    <script>
+        var stylesArray = [
+            {
+                StyleName: "color",
+                StyleValue: "#699DFF"
+            },
+
+            {
+                StyleName: "font-size",
+                StyleValue: "24px"
+            },
+
+            {
+                StyleName: "font-weight",
+                StyleValue: "800"
+            },
+
+            {
+                StyleName: "text-align",
+                StyleValue: "center"
+            }
+        ];
+
+        function func(text) {
+            let strStylesResult = "";
+
+            for(let i = 0; i < stylesArray.length; i++) {
+                if (i < stylesArray.length - 2) strStylesResult += `${stylesArray[i].StyleName}: ${stylesArray[i].StyleValue}; `;
+                else strStylesResult += `${stylesArray[i].StyleName}: ${stylesArray[i].StyleValue}`;
+            }
+
+            document.write(`<p style="${strStylesResult}">${text}</p>`);
+        }
+
+        function data() {
+            let text = textInput.value;
+            func(text);
+        }
+
+        addButton.onclick = data;
+    </script>
+</body>
+</html>
