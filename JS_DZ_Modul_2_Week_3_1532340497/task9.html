@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите строку">
+        <input type="text" id="delimerInput" placeholder="Введите разделитель">
+        <button id="btn">Вычислить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function splitData(str, delimer) {
+            let res = [];
+            let resStr = "";
+
+            for(let i = 0; i < str.length; i++) {
+                if(str[i] !== delimer) resStr += str[i]
+                else {
+                    if (resStr) {
+                        res.push(resStr);
+                        resStr = "";
+                    }
+                }
+            }
+
+            if (resStr) res.push(resStr);
+
+            return res;
+        }
+
+        function data() {
+            const str = strInput.value;
+            const delimer = delimerInput.value;
+            result.innerText = `${splitData(str, delimer)}`;
+        }
+
+        btn.onclick = data;
+    </script>
+</body>
+</html>

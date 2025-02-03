@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите url">
+        <button id="btn">Вычислить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function splitData(str) {
+            const urlObject = new URL(str)
+
+            return `Протокол: ${urlObject.protocol}, домен: ${urlObject.hostname}${urlObject.pathname !== "" ? `, путь: ${urlObject.pathname}` : ""}`;
+        }
+
+        // Вариант 2 ↓
+
+        /* function splitData(str) {
+            let protocol = str.split("://");
+            let domain = protocol[1].split("/");
+            let path = "";
+
+            for(let i = 1; i < domain.length; i++) {
+                path += `/${domain[i]}`
+            }
+
+            let res = `Протокол: ${protocol[0]}, домен: ${domain[0]}${path !== "" ? `, путь: ${path}` : ""}`;
+
+            return res
+        } */
+
+        function data() {
+            const str = strInput.value;
+            result.innerText = `${splitData(str)}`;
+        }
+
+        btn.onclick = data;
+    </script>
+</body>
+</html>

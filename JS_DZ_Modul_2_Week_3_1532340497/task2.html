@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите 2-х значное число">
+        <button id="btn">Перевести</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        function from10To20(numb) {
+            let fromTenToNinty = [
+                {
+                    number: 10,
+                    name: "десять"
+                },
+
+                {
+                    number: 11,
+                    name: "одиннадцать"
+                },
+
+                {
+                    number: 12,
+                    name: "двенадцать"
+                },
+
+                {
+                    number: 13,
+                    name: "тринадцать"
+                },
+
+                {
+                    number: 14,
+                    name: "четырнадцать"
+                },
+
+                {
+                    number: 15,
+                    name: "пятнадцать"
+                },
+
+                {
+                    number: 16,
+                    name: "шестнадцать"
+                },
+
+                {
+                    number: 17,
+                    name: "семнадцать"
+                },
+
+                {
+                    number: 18,
+                    name: "восемнадцать"
+                },
+
+                {
+                    number: 19,
+                    name: "девятнадцать"
+                }
+            ]
+
+            return (fromTenToNinty.find(item => item.number === parseInt(numb))).name
+        }
+
+        function firstNumb(numb) {
+            let dozens = [
+                {
+                    number: 2,
+                    name: "двадцать"
+                },
+
+                {
+                    number: 3,
+                    name: "тридцать"
+                },
+
+                {
+                    number: 4,
+                    name: "сорок"
+                },
+
+                {
+                    number: 5,
+                    name: "пятьдесят"
+                },
+
+                {
+                    number: 6,
+                    name: "шестьдесят"
+                },
+
+                {
+                    number: 7,
+                    name: "семьдесят"
+                },
+
+                {
+                    number: 8,
+                    name: "восемьдесят"
+                },
+
+                {
+                    number: 9,
+                    name: "девяносто"
+                }
+            ]
+
+            return (dozens.find(item => item.number === parseInt(numb))).name
+        }
+
+        function secondNumb(numb) {
+            let simpleNumbers = [
+                {
+                    number: 1,
+                    name: "один"
+                },
+
+                {
+                    number: 2,
+                    name: "два"
+                },
+
+                {
+                    number: 3,
+                    name: "три"
+                },
+
+                {
+                    number: 4,
+                    name: "четыре"
+                },
+
+                {
+                    number: 5,
+                    name: "пять"
+                },
+
+                {
+                    number: 6,
+                    name: "шесть"
+                },
+
+                {
+                    number: 7,
+                    name: "семь"
+                },
+
+                {
+                    number: 8,
+                    name: "восемь"
+                },
+
+                {
+                    number: 9,
+                    name: "девять"
+                }
+            ]
+
+            return (simpleNumbers.find(item => item.number === parseInt(numb))).name
+        }
+
+        function data() {
+            let numb = strInput.value
+
+            if(numb.length !== 2) result.innerText = `Некорректный ввод. Повторите попытку`
+            else {
+                if(parseInt(numb) >= 10 && parseInt(numb) <= 19) result.innerText = `${numb} - ${from10To20(numb)}`
+                else {
+                    if(parseInt(numb[1]) === 0) result.innerText = `${numb} - ${firstNumb(numb[0])}`
+                    else result.innerText = `${numb} - ${firstNumb(numb[0])} ${secondNumb(numb[1])}`
+                }
+            }
+        }
+
+        btn.onclick = data
+    </script>
+</body>
+</html>

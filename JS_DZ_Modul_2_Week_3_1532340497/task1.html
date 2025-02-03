@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите строку">
+        <button id="btn">Анализировать</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        /*
+
+        В коде реализованы методы, которые мы ещё не изучали:
+        /[a-zA-Zа-яА-Я]/ - регулярное выражение, которое ищет один символ из заданного набора
+        .test(...) - это метод объекта RegExp, который проверяет, соответствует ли символ заданному регулярному выражению
+
+        /\d/ - регулярное выражение, которое ищет одну цифру (от 0 до 9). 
+        \d — специальный символ, обозначающий любую цифру
+
+        innerHTML — это свойство элемента DOM, которое позволяет получить или установить HTML-содержимое этого элемента
+        */
+
+        function strAnalyze() {
+            let str = strInput.value;
+
+            let arrLetters = [];
+            let arrNumbers = [];
+            let arrChars = [];
+
+            for (let i = 0; i < str.length; i++) {
+                if (/[a-zA-Zа-яА-Я]/.test(str[i])) {
+                    arrLetters.push(str[i]);
+                }
+                else if (/\d/.test(str[i])) {
+                    arrNumbers.push(str[i]);
+                }
+                else {
+                    if (str[i] === " ") {
+                        arrChars.push("_"); // Замена пробела на "_" для удобства отображения результата
+                    } else {
+                        arrChars.push(str[i]);
+                    }
+                }
+            }
+
+            // innerHTML для поддержки переносов строк
+            result.innerHTML = 
+            `
+            Количество букв: ${arrLetters.length}.<br>
+            Буквы: ${arrLetters.join(', ')}<br><br>
+            Количество цифр: ${arrNumbers.length}.<br>
+            Цифры: ${arrNumbers.join(', ')}<br><br>
+            Количество других знаков: ${arrChars.length}.<br>
+            Другие знаки: ${arrChars.join(', ')}
+            `;
+        }
+
+        btn.onclick = strAnalyze;
+    </script>
+</body>
+</html>

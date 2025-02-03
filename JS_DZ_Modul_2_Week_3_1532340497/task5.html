@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите словосочетание">
+        <button id="btn">Заменить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function change(str) {
+            let strArr = str.split(/[\s\p{P}]/gu); // \s - пробелы, \p{P} - все знаки препинания в Unicode
+            let strRes = "";
+
+            for(let i = 0; i < strArr.length; i++) {
+                strRes += strArr[i][0];
+            }
+
+            return strRes.toUpperCase();
+        }
+
+        function data() {
+            let str = strInput.value;
+            result.innerText = `${change(str.trim())}`;
+        }
+
+        btn.onclick = data;
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        function print() {
+            let template = arguments[0]
+            let result = template
+
+            for(let i = 0; i < arguments.length; i++){
+                result = result.replace(`%${i}`, arguments[i])
+            }
+            
+            return result
+        }
+
+        let template = "Today %1 and year is %2"
+        let param1 = "Monday"
+        let param2 = 2025
+
+        result.innerText = `${print(template, param1, param2)}`
+    </script>
+</body>
+</html>

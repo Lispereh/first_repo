@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите строку">
+        <button id="btn">Заменить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function change(str) {
+            let changeStr = "";
+
+            for(let i = 0; i < str.length; i++) {
+                if (/[A-Z]/.test(str[i])) changeStr += str[i].toLowerCase();
+                else if (/[a-z]/.test(str[i])) changeStr += str[i].toUpperCase();
+                else if (/[A-Я]/.test(str[i])) changeStr += str[i].toLowerCase();
+                else if (/[а-я]/.test(str[i])) changeStr += str[i].toUpperCase();
+                else if (/\d/.test(str[i])) changeStr += "_";
+                else changeStr += str[i];
+            }
+            
+            return changeStr;
+        }
+
+        function data() {
+            let str = strInput.value;
+            result.innerText = `${change(str)}`;
+        }
+
+        btn.onclick = data;
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+</head>
+<body>
+    <div class="str">
+        <input type="text" id="strInput" placeholder="Введите выражение">
+        <button id="btn">Вычислить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function res(str) {
+            const operatorMatch = str.match(/[\+\-\*\/]/);
+            if (!operatorMatch) {
+                return "Ошибка: оператор не найден.";
+            }
+            
+            const operator = operatorMatch[0];
+            const strArr = str.split(/[\+\-\*\/]/);
+            
+            let result = 0;
+
+            const num1 = parseFloat(strArr[0].trim());
+            const num2 = parseFloat(strArr[1].trim());
+
+            if (isNaN(num1) || isNaN(num2)) {
+                return "Ошибка: некорректные операнды.";
+            }
+
+            switch(operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 === 0) {
+                        return "Ошибка: деление на ноль.";
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    return "Ошибка: неподдерживаемая операция.";
+            }
+
+            return result;
+        }
+
+        function data() {
+            const str = strInput.value;
+            result.innerText = `${str} = ${res(str)}`;
+        }
+
+        btn.onclick = data;
+    </script>
+</body>
+</html>
