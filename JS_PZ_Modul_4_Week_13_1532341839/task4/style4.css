@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.m-bottom {
+    margin-bottom: 25px;
+}
+
+#message-list {
+    border: 1px solid #6e6e6e;
+    width: 500px;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+.message {
+    border-bottom: 1px solid #6e6e6e;
+}
+
+.message-info {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.message-comment {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: 500;
+}
+
+#name, #comment {
+    border: 1px solid #6e6e6e;
+    width: 500px;
+    margin-top: 10px;
+}
+
+#name {
+    height: 30px;
+}
+
+#comment {
+    height: 150px;
+}
+
+#comment.red-input {
+    border: 2px solid #cf0000;
+}
+
+#name.red-input {
+    border: 2px solid #cf0000;
+}
+
+button {
+    background-color: #00c932;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-weight: 550;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #008b23;
+}
