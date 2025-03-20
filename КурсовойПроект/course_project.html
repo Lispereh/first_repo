@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .server-message {
+            text-align: center;
+            background: #ddd;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .other-message {
+            background: #f1f1f1;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .self-message {
+            text-align: right;
+            background: #d1e7ff;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        #regDiv, #chatDiv {
+            display: none;
+        }
+
+        input, button {
+            padding: 5px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #messageContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        #userStatusContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #userStatusContainer h3 {
+            margin: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="regDiv">
+        <form id="regForm">
+            <input type="text" name ="name" placeholder="Name">
+            <input type="password" name ="password" placeholder="Password">
+            <button type="submit">Register</button>
+        </form>
+        <button id="goToLoginButton">Login</button>
+    </div>
+
+    <div id="loginDiv">
+        <form id="loginForm">
+            <input type="text" name ="name" placeholder="Name">
+            <input type="password" name ="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <button id="goToRegButton">Sign Up</button>
+    </div>
+
+    <div id="userStatusContainer">
+        <h3>Online Users</h3>
+        <div id="userStatusList"></div>
+    </div>
+
+    <div id="chatDiv">
+        <form id="messagesForm">
+            <input type="text" name ="message" placeholder="Message">
+            <button type="submit">Send</button>
+        </form>
+
+        <div id="messageContainer">
+
+        </div>
+    </div>
+
+    <script>
+        var userName = null;
+
+        const messageContainer = document.getElementById("messageContainer");
+        
+        const goToRegButton = document.getElementById("goToRegButton");
+        const goToLoginButton = document.getElementById("goToLoginButton");
+
+        const regDiv = document.getElementById("regDiv");
+        const loginDiv = document.getElementById("loginDiv");
+        const chatDiv = document.getElementById("chatDiv");
+
+        const messagesForm = document.getElementById("messagesForm");
+        const loginForm = document.getElementById("loginForm");
+        const regForm = document.getElementById("regForm");
+
+        const userStatusListDiv = document.getElementById("userStatusContainer");
+
+        const address = "ws://localhost:7890/chat";
+        const socket = new WebSocket(address);
+        var user;
+
+        socket.onopen = () => {
+            console.log("Connected!");
+        }
+
+        socket.onmessage = (event) => {
+            console.log(event);
+            let message = JSON.parse(event.data);
+            switch(message.Type) {
+                case 0:
+                    HandleRegistration(message);
+                    break;
+                case 1:
+                    HandleLogin(message);
+                    break;
+                case 2:
+                    HandleHistory(message);
+                    break;
+                case 3:
+                    HandleMessage(message);
+                    break;
+                case 4:
+                    HandleInfo(message);
+                    break;
+                case 5:
+                    UpdateUserStatus(message);
+                    break;
+            }
+        }
+
+        function UpdateUserStatus(message) {
+            const userStatusContainerDiv = document.getElementById("userStatusList");
+            userStatusContainerDiv.innerText = message.Text;
+            console.log(message.Text);
+        }
+
+        regForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            let name = regForm.elements.name.value;
+            let password = regForm.elements.password.value;
+
+            let message = {
+                Name: name,
+                Password: password,
+                Type: 0
+            }
+
+            userName = name;
+            socket.send(JSON.stringify(message));
+        });
+        
+        loginForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            let name = loginForm.elements.name.value;
+            let password = loginForm.elements.password.value;
+
+            let message = {
+                Name: name,
+                Password: password,
+                Type: 1
+            }
+
+            userName = name;
+            socket.send(JSON.stringify(message));
+        });
+
+        messagesForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            let text = messagesForm.elements.message.value;
+
+            let message = {
+                Text: text,
+                Type: 3
+            }
+
+            socket.send(JSON.stringify(message));
+        });
+
+        goToRegButton.addEventListener("click", () => {
+            loginDiv.style.display = "none";
+            regDiv.style.display = "block";
+        });
+
+        goToLoginButton.addEventListener("click", () => {
+            regDiv.style.display = "none";
+            loginDiv.style.display = "block";
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.createElement("div");
+
+            if(type == "server") messageDiv.classList.add("server-message");
+            else if(type == "self") messageDiv.classList.add("self-message");
+            else messageDiv.classList.add("other-message");
+
+            messageDiv.innerText = text;
+            messageContainer.appendChild(messageDiv);
+        }
+
+        function HandleRegistration(message) {
+            if (message.IsSuccess) {
+                regDiv.style.display = "none";
+                chatDiv.style.display = "block";
+                userStatusListDiv.style.display = "block";
+                
+                showMessage("Registration Success!", "server");
+            }
+            else {
+                userName = null;
+                alert(message.ErrorMessage);
+            }
+        }
+
+        function HandleLogin(message) {
+            if (message.IsSuccess) {
+                loginDiv.style.display = "none";
+                chatDiv.style.display = "block";
+                userStatusListDiv.style.display = "block";
+                
+                showMessage("Login Success!", "server");
+            }
+            else {
+                userName = null;
+                alert(message.ErrorMessage);
+            }
+        }
+
+        function HandleMessage(message) {
+            if(userName === null) return;
+            let text = formatMessage(message.Message);
+            if(message.Message.UserName == userName) showMessage(text, "self");
+            else showMessage(text, "other");
+        }
+
+        function HandleHistory(message) {
+            if(userName === null) return;
+
+            for(messageItem of message.Messages) {
+                let text = formatMessage(messageItem);
+                if(messageItem.UserName == userName) showMessage(text, "self");
+                else showMessage(text, "other");
+            }
+        }
+
+        function formatMessage(message) {
+            let date = new Date(Date.parse(message.Timestamp));
+
+            let options = {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+            }
+
+            let text = date.toLocaleString("ru-RU", options) + " - " + message.UserName + ": " + message.Text;
+
+            return text;
+        }
+
+        function HandleInfo(message) {
+            if(userName === null) return;
+            showMessage(message.Text, "server");
+        }
+    </script>
+</body>
+</html>
